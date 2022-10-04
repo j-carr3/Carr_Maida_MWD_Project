@@ -2,16 +2,22 @@ const axios = window.axios;
 const url =
   "https://my-json-server.typicode.com/kellybuchanan/WebDev-Spring2021";
 
-export const createUser = (id, firstName, lastName, email, password) => {
+export const createUser = (
+  itemNumber,
+  itemName,
+  quantity,
+  pricePerUnit,
+  purchased
+) => {
   return axios({
     method: "post",
     url: `${url}/users`,
     data: {
-      id,
-      firstName,
-      lastName,
-      email,
-      password
+      itemNumber,
+      itemName,
+      quantity,
+      pricePerUnit,
+      purchased
     },
     headers: {
       "Content-Type": "application/json"
@@ -26,7 +32,7 @@ export const createUser = (id, firstName, lastName, email, password) => {
     });
 };
 
-export const getAllUsers = () => {
+export const getAllPurchases = () => {
   return axios
     .get(`${url}/users`)
     .then((response) => {

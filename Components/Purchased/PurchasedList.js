@@ -1,15 +1,16 @@
 import { html } from "https://unpkg.com/htm/preact/standalone.module.js";
 
-const MainList = ({ users }) => {
+const MainList = ({ purchases }) => {
   return html`
     <div>
       <hr />
       This is the stateless child comonent with list
       <ul>
-        ${users.map(
-          (user) =>
-            html` <li key="${user}">
-              ${user.email} | ${user.firstName} ${user.lastName}
+        ${purchases.map(
+          (purchase) =>
+            html` <li key="${purchase}">
+              ${purchase.itemName} | ${purchase.pricePerUnit}
+              ${purchase.quantity}
             </li>`
         )}
       </ul>
