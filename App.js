@@ -1,6 +1,6 @@
 import {
   html,
-  render
+  render,
 } from "https://unpkg.com/htm/preact/standalone.module.js";
 import Main from "./Components/Main/Main.js";
 
