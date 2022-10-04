@@ -34,7 +34,7 @@ export const createUser = (
 
 export const getAllPurchases = () => {
   return axios
-    .get(`${url}/users`)
+    .get(`${url}/purchases`)
     .then((response) => {
       console.log(response.data);
       return response.data;
