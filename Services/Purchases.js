@@ -2,7 +2,7 @@ const axios = window.axios;
 const url =
   "https://my-json-server.typicode.com/kellybuchanan/WebDev-Spring2021";
 
-export const createUser = (
+export const createPurchase = (
   itemNumber,
   itemName,
   quantity,
