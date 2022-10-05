@@ -7,7 +7,7 @@ import { getAllUsers } from "../../Services/Users.js";
 import UsersList from "./UsersList.js";
 import LogInForm from "./LogInForm.js";
 
-const Users = () => {
+const LogIn = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -26,4 +26,4 @@ const Users = () => {
   `;
 };
 
-export default Users;
+export default LogIn;
