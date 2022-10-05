@@ -1,6 +1,6 @@
 import { html } from "https://unpkg.com/htm/preact/standalone.module.js";
 
-const MainList = ({ purchases }) => {
+const PurchasedList = ({ purchases }) => {
   return html`
     <div>
       <hr />
@@ -18,4 +18,4 @@ const MainList = ({ purchases }) => {
   `;
 };
 
-export default MainList;
+export default PurchasedList;
