@@ -5,6 +5,8 @@ import { html } from "https://unpkg.com/htm/preact/standalone.module.js";
   TODO: Add conditional so that only desired items are shown... i.e.
         we are going to have a ToPurchase list as well so only items that are 
         already purchased should show up here
+        We also need to refactor in order to clarify which list is showing the items that
+        still need to be bought and items that have already been purchased based on file names
   Currently column headers should be as follows:
   Item Name | Quantity | Price Per Unit | Total Cost
  */
