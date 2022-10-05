@@ -22,7 +22,6 @@ const Purchased = () => {
   return html`
     <div>
       <h1>Taylor and Johnny's Feature 3</h1>
-      This is the stateful parent component.
       <${PurchasedList} purchases=${purchases} />
       <${ToPurchaseForm} />
     </div>

@@ -18,8 +18,6 @@ const LogIn = () => {
 
   return html`
     <div>
-      <h1>Taylor and Johnny's Feature 3</h1>
-      This is the stateful parent component.
       <${UsersList} users=${users} />
       <${LogInForm} />
     </div>

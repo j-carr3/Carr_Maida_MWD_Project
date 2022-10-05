@@ -12,7 +12,6 @@ const PurchasedList = ({ purchases }) => {
   return html`
     <div>
       <hr />
-      This is the stateless child comonent with list
       <ul>
         ${purchases.map(
           (
