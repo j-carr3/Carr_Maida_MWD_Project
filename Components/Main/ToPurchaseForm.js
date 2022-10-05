@@ -1,13 +1,13 @@
 import { html } from "https://unpkg.com/htm/preact/standalone.module.js";
 
 // TODO: Clean up formatting of form so that it looks more uniform
-const PurchaseForm = () => {
+const ToPurchaseForm = () => {
   return html`
     <div class="container">
       <form>
-        <h1>Purchase Form</h1>
+        <h1>To Purchase Form</h1>
         <div class="field">
-          <label for="itemName">Item Purchased: </label>
+          <label for="itemName">Item To Purchase: </label>
           <input
             type="text"
             id="itemName"
@@ -41,4 +41,4 @@ const PurchaseForm = () => {
   `;
 };
 
-export default PurchaseForm;
+export default ToPurchaseForm;
