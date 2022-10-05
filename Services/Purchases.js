@@ -1,7 +1,6 @@
 const axios = window.axios;
-const url =
-  "https://my-json-server.typicode.com/kellybuchanan/WebDev-Spring2021";
 
+// TODO: Fix this function so that it adds to the json when called
 export const createPurchase = (
   itemNumber,
   itemName,
@@ -11,7 +10,6 @@ export const createPurchase = (
 ) => {
   return axios({
     method: "post",
-    url: `${url}/users`,
     data: {
       itemNumber,
       itemName,
@@ -32,12 +30,14 @@ export const createPurchase = (
     });
 };
 
+// This functions returns all purchases that are currently in the items.json
+// file, should rename to purchased.json and toPurchase.json
 export const getAllPurchases = () => {
   return axios
-    .get(`${url}/purchases`)
+    .get("/../Data/items.json") // One issue encountered early was paths, make sure that we do it correctly here and in imports
     .then((response) => {
-      console.log(response.data);
-      return response.data;
+      console.log(response.data.data[1]); // Testing how to drill into data
+      return response.data.data;
     })
     .catch((err) => {
       console.log("GET Error: ", err);

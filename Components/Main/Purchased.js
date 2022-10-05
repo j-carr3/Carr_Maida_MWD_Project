@@ -1,3 +1,6 @@
+// TODO: Add CSS to each child component in order
+//       to make site look more official/ less like it's from the 90's
+
 import {
   html,
   useEffect,
