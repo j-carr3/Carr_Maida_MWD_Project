@@ -1,11 +1,11 @@
 import {
   html,
-  render,
+  render
 } from "https://unpkg.com/htm/preact/standalone.module.js";
-import Main from "./Components/Main/Main.js";
+import Purchased from "./Components/Main/Purchased.js";
 
 function App() {
-  return html`<${Main} />`;
+  return html`<${Purchased} />`;
 }
 
 render(html` <${App} /> `, document.getElementById("app"));
