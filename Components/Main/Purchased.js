@@ -10,7 +10,7 @@ import { getAllPurchases } from "../../Services/Purchases.js";
 import PurchasedList from "./PurchasedList.js";
 import ToPurchaseForm from "./ToPurchaseForm.js";
 
-const Purchased = () => {
+export const Purchased = () => {
   const [purchases, setPurchases] = useState([]);
 
   useEffect(() => {
@@ -28,4 +28,16 @@ const Purchased = () => {
   `;
 };
 
-export default Purchased;
+export function AddToPurchase() {
+  function insertPurchase() {
+    alert("I am working");
+  }
+  return html`
+    <div
+      class="App"
+      <${ToPurchaseForm}
+      data="Click here"
+      onSubmitClick="${insertPurchase}"
+    />
+  `;
+}

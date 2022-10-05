@@ -34,7 +34,9 @@ const ToPurchaseForm = () => {
           />
         </div>
         <div class="field">
-          <button type="submit" class="full">Submit</button>
+          <button onClick=${onSubmitClick}>
+            ${data} type="submit" class="full">Submit
+          </button>
         </div>
       </form>
     </div>
