@@ -12,7 +12,6 @@ const UsersList = ({ users }) => {
   return html`
     <div>
       <hr />
-      This is the stateless child comonent with list
       <ul>
         ${users.map(
           (
