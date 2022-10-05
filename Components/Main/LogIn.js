@@ -1,3 +1,4 @@
+//This is the parent component for the Log In and User List
 import {
   html,
   useEffect,
@@ -16,6 +17,7 @@ const LogIn = () => {
     });
   }, []);
 
+  // display the user list for now just to make sure it works
   return html`
     <div>
       <${UsersList} users=${users} />
