@@ -6,12 +6,12 @@ const PurchaseForm = () => {
       <form>
         <h1>Purchase Form</h1>
         <div class="field">
-          <label for="itemName">Item:</label>
+          <label for="itemName">Item Purchased: </label>
           <input
             type="text"
             id="itemName"
             name="itemName"
-            placeholder="Enter the item you purchased"
+            placeholder="Enter the item"
           />
         </div>
         <div class="field">
@@ -24,7 +24,7 @@ const PurchaseForm = () => {
           />
         </div>
         <div class="field">
-          <label for="pricePerUnit">Price Per Unit:$</label>
+          <label for="pricePerUnit">Price Per Unit: </label>
           <input
             type="number"
             id="pricePerUnit"
