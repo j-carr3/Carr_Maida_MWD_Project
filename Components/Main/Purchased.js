@@ -9,7 +9,6 @@ import {
 import { getAllPurchases } from "../../Services/Purchases.js";
 import PurchasedList from "./PurchasedList.js";
 import ToPurchaseForm from "./ToPurchaseForm.js";
-import LogInForm from "./LogInForm.js";
 
 const Purchased = () => {
   const [purchases, setPurchases] = useState([]);
@@ -26,7 +25,6 @@ const Purchased = () => {
       This is the stateful parent component.
       <${PurchasedList} purchases=${purchases} />
       <${ToPurchaseForm} />
-      <${LogInForm} />
     </div>
   `;
 };
