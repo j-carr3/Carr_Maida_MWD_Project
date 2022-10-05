@@ -1,3 +1,4 @@
+//this is a child component for the form for purchased items
 import { html } from "https://unpkg.com/htm/preact/standalone.module.js";
 
 const PurchasedForm = () => {

@@ -1,3 +1,5 @@
+// this is a child component containing the log in form
+
 import { html } from "https://unpkg.com/htm/preact/standalone.module.js";
 
 // TODO: Clean up formatting of form so that it looks more uniform
