@@ -19,7 +19,7 @@ function EventsData() {
         <ol>
           {events.map((event) => (
             <li key={event.objectId}>
-              {event.get("event_name")} | host: {event.get("host_id")} | date: {event.get("event_date_time")} |
+              {event.get("event_name")} | host: {event.get("host_id")} |
               place: {event.get("event_location")} 
 			</li>
           ))}
