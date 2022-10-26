@@ -79,8 +79,6 @@ const EventList = () => {
 
   return (
     <div>
-      <hr />
-      This is the main list parent component.
       <div>
         {events.length > 0 && (
           <ul>

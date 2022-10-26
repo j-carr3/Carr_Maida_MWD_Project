@@ -5,7 +5,7 @@ import EventList from "./CreateEventList"
 const EventModule = () => {
   return (
     <div>
-      <h2>This is the event module. </h2>
+      <h2>Create a new event! </h2>
       <EventList />
     </div>
   );

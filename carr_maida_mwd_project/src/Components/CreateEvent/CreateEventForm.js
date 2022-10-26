@@ -5,7 +5,7 @@ const EventForm = ({ onChange, onClick }) => {
   return (
     <div>
       <hr />
-      This is the event form child component.
+      This is the form for creating a new event
       <form>
         <input text="event" onChange={onChange} />
         <button type="submit" onClick={onClick}>

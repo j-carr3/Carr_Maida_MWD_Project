@@ -4,10 +4,10 @@ import Parse from "parse";
 // CREATE operation - new event with Name
 export const createEvent = (Name) => {
   console.log("Creating: ", Name);
-  const Event = Parse.Object.extend("Event");
+  const Event = Parse.Object.extend("events");
   const event = new Event();
   // using setter to UPDATE the object
-  event.set("name", Name);
+  event.set("event_name", Name);
   return event.save().then((result) => {
     // returns new Event object
     return result;
