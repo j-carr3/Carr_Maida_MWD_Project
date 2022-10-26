@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {getAllEvents} from "../../Services/EventService";
 
-/* TODO: Change the fields we are pulling from back4app */
 function EventsData() {
   const [events, setEvents] = useState([]);
 
@@ -28,5 +27,7 @@ function EventsData() {
     </div>
   );
 }
+
+//for now we are just displaying the host_id, but once we make this a foreign key that points to users, it will display the host's name rather than their id
 
 export default EventsData;

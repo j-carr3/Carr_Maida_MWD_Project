@@ -1,3 +1,6 @@
+// this service is for reading all items from the datbase using Parse
+
+
 import Parse from "parse";
 
 export default function getItems() {

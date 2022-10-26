@@ -13,7 +13,9 @@ function ItemsData() {
 	return (
 		<div>
 			<h1>Items for the Events</h1>
-			
+		
+			//display all the items for now
+			//in the future, we will display only the ones for the current event	
 			{items.length > 0 && (
 				<ol>
 					{items.map((item) => (
