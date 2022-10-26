@@ -6,8 +6,8 @@ function EventsData() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    getAllEvents().then((events) => {
-      setEvents(events);
+    getAllEvents().then((result) => {
+      setEvents(result);
     });
   }, []);
 

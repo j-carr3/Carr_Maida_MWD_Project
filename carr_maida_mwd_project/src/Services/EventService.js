@@ -4,7 +4,7 @@ import Parse from "parse";
 // CREATE operation - new event with Name
 export const createEvent = (Name) => {
   console.log("Creating: ", Name);
-  const Event = Parse.Object.extend("Event");
+  const Event = Parse.Object.extend("events");
   const event = new Event();
   // using setter to UPDATE the object
   event.set("name", Name);
@@ -16,7 +16,7 @@ export const createEvent = (Name) => {
 
 // READ operation - get event by ID
 export const getById = (id) => {
-  const Event = Parse.Object.extend("Event");
+  const Event = Parse.Object.extend("events");
   const query = new Parse.Query(Event);
   return query.get(id).then((result) => {
     // return Event object with objectId: id
@@ -26,19 +26,21 @@ export const getById = (id) => {
 
 // READ operation - get all events in Parse class Event
 export const getAllEvents = () => {
-  const Event = Parse.Object.extend("Event");
+  const Event = Parse.Object.extend("events");
   const query = new Parse.Query(Event);
-  return query.find().then((results) => {
+  return query.find().then((result) => {
     // returns array of Event objects
-    return results;
+    return result;
   });
 };
 
 // DELETE operation - remove event by ID
 export const removeEvent = (id) => {
-  const Event = Parse.Object.extend("Event");
+  const Event = Parse.Object.extend("events");
   const query = new Parse.Query(Event);
   return query.get(id).then((event) => {
     event.destroy();
   });
 };
+
+
