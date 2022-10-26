@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import getAllEvents from "../../Services/EventService";
+import {getAllEvents} from "../../Services/EventService";
 
 /* TODO: Change the fields we are pulling from back4app */
 function EventsData() {
