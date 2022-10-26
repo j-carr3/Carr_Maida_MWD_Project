@@ -5,6 +5,7 @@ import EventsList from "./EventsList.js";
 const EventsComponent = () => {
   return (
     <div>
+      <h2> This is the Events List Component </h2>
       <EventsList />
     </div>
   );
