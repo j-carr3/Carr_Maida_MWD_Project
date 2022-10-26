@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import getEvents from "../../Services/EventService";
+import {getAllEvents} from "../../Services/EventService";
 
 /* TODO: Change the fields we are pulling from back4app */
 function EventsData() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    getEvents().then((result) => {
-      setEvents(result);
+    getAllEvents().then((events) => {
+      setEvents(events);
     });
   }, []);
 
