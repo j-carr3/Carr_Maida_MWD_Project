@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
  
 ### Added
 - Feature for users to create collaborative playlists for specific events
+- In order for completeness in future, what we are submitting with this feature for our two "drawings" include the classes/components we are planning to add in the future
  
 ### Changed
  
@@ -18,6 +19,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Routing from home to Event list and Create Event page
 - Parse to connect to Back4App
+- Component Tree Diagram
+- Database UML
  
 ### Changed
 - From CodeSandbox to VSCode and local development
