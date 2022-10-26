@@ -19,9 +19,9 @@ function EventsData() {
         <ol>
           {events.map((event) => (
             <li key={event.objectId}>
-              {event.get("name")} | email: {event.get("email")} | house:{" "}
-              {event.get("house")} | major: {event.get("major")}
-            </li>
+              {event.get("event_name")} | host: {event.get("host_id")} | date: {event.get("event_date_time")} |
+              place: {event.get("event_location")} 
+			</li>
           ))}
         </ol>
       )}
