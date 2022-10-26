@@ -10,6 +10,9 @@ const Footer = () => (
         <li>
           <Link to="/Events">Events</Link>
         </li>
+        <li>
+            <Link to="/CreateEvent">Create New Event</Link>
+        </li>
       </ul>
     </nav>
   </footer>
