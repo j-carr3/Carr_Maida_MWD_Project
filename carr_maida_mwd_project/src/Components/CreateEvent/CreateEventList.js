@@ -3,7 +3,7 @@ import {
   createEvent,
   getAllEvents,
   removeEvent
-} from "../../Services/CreateEventService";
+} from "../../Services/EventService";
 import CreateEventForm from "./CreateEventForm";
 
 /* STATEFUL PARENT COMPONENT */
