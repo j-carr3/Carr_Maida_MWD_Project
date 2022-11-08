@@ -11,8 +11,12 @@ export default function Components() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={Home} />
+        <Route path="/" element={<ProtectedRoute path="/" element={Home} />} />
         <Route path="/events" element={Events} />
+		<Route path="/auth" element={<AuthModule />} />
+		<Route path="/auth/register" element={<AuthRegister />} />
+		<Route path="/auth/login" element={AuthLogin />} />
+		<Route path="*" element={<Navigate to="/auth" replace />} />
       </Routes>
       <Footer />
     </Router>
