@@ -14,11 +14,12 @@ export default function Components() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/createEvent" element={<CreateEvent />} />
-        <Route path="/eventDetails" element={<EventDetails />} />
-        <Route path="*" element={<p>Path not resolved</p>} />
+        <Route path="/" element={<ProtectedRoute path="/" element={Home} />} />
+        <Route path="/events" element={Events} />
+		    <Route path="/auth" element={<AuthModule />} />
+		    <Route path="/auth/register" element={<AuthRegister />} />
+		    <Route path="/auth/login" element={AuthLogin />} />
+		    <Route path="*" element={<Navigate to="/auth" replace />} />
       </Routes>
     </Router>
   );
