@@ -6,6 +6,8 @@ import Header from "../Header/Header.js"
 
 
 /* MAIN MODULE WITH STATEFUL PARENT AND STATELESS CHILD */
+// We still need to add the ability for users to add to event list and then go to 
+// the event details for that specific event. 
 const EventsComponent = () => {
   return (
     <div>
