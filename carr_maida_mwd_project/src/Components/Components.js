@@ -1,5 +1,4 @@
 import Home from "./Home/Home";
-import Header from "./Header/Header";
 import Events from "./Events/Events";
 import AuthModule from "./Auth/Auth";
 import AuthRegister from "./Auth/AuthRegister";
@@ -17,7 +16,6 @@ import {
 export default function Components() {
   return (
     <Router>
-      <Header />
       <Routes>
         <Route path="/" element={<ProtectedRoute path="/" element={Home} />} />
 		    <Route path="/auth" element={<AuthModule />} />

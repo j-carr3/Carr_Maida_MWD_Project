@@ -2,6 +2,8 @@ import React from "react";
 // import EventDetailsList from "./EventDetailsList"
 //EventDetailsList will be imported in the future once we build this feature out
 import ItemsList from "./ItemsList"
+import Header from "../Header/Header.js"
+
 
 /*
  this is the list of all items in the database
@@ -10,6 +12,7 @@ import ItemsList from "./ItemsList"
  const EventDetailsModule = () => {
   return (
     <div>
+      <Header />
       <h2>This will list the details for all events </h2>
 	  <h2>Items</h2>
 	  <ItemsList /> 
