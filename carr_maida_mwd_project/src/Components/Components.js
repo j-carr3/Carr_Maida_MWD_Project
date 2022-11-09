@@ -13,6 +13,10 @@ import {
   Routes,
 } from "react-router-dom";
 
+//Protected Routes are added on all pages past the authorization page
+
+//Even though users automatically start on the auth page, they should not be able to access any other pages even with the correct link when the page is protected
+
 export default function Components() {
   return (
     <Router>
@@ -29,3 +33,5 @@ export default function Components() {
     </Router>
   );
 }
+
+//In the future, we could add Protected Routes to specific event pages, where the user can only access events if they are invited to that event
