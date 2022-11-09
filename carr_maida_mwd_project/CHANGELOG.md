@@ -13,6 +13,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
  
 ### Fixed
+
+## [0.3.0] - 2022-11-09
+ 
+### Added
+- Auth Module with associated register and login components
+- Protected routing to all components
+ 
+### Changed
+- Header from being rendered in main components file to being rendered only in appropriate files that require the navigation header
+- Some of the comments documenting future work
+ 
+### Fixed
  
 ## [0.2.0] - 2022-10-26
  
