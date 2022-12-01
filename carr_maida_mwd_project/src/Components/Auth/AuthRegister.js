@@ -13,10 +13,9 @@ const AuthRegister = () => {
     password: ""
   });
 
-  // flags in the state to watch for add/remove updates
   const [add, setAdd] = useState(false);
 
-  // redirect already authenticated users back to home
+  // perform logged in check 
   useEffect(() => {
     if (checkUser()) {
       alert("You are already logged in");
@@ -24,9 +23,7 @@ const AuthRegister = () => {
     }
   }, [navigate]);
 
-  // useEffect that run when changes are made to the state variable flags
   useEffect(() => {
-    // checkUser() ? history.push("/home"): null;
     if (newUser && add) {
       createUser(newUser).then((userCreated) => {
         if (userCreated) {
@@ -35,7 +32,6 @@ const AuthRegister = () => {
           );
           navigate("/");
         }
-        // TODO: redirect user to main app
         setAdd(false);
       });
     }

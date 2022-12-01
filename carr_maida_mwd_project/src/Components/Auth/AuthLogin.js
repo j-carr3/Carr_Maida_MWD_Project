@@ -6,15 +6,14 @@ import { useNavigate } from "react-router-dom";
 const AuthLogin = () => {
   const navigate = useNavigate();
 
-  // redirect already authenticated users back to home
   const [currentUser, setCurrentUser] = useState({
     email: "",
     password: ""
   });
 
-  // flags in the state to watch for add/remove updates
   const [add, setAdd] = useState(false);
 
+  // If user is already logged in then redirect them away from Auth page
   useEffect(() => {
     if (checkUser()) {
       alert("You are already logged in");
@@ -22,7 +21,6 @@ const AuthLogin = () => {
     }
   }, [navigate]);
 
-  // useEffect that run when changes are made to the state variable flags
   useEffect(() => {
     if (currentUser && add) {
       loginUser(currentUser).then((userLoggedIn) => {
@@ -32,7 +30,6 @@ const AuthLogin = () => {
           );
           navigate("/");
         }
-        // TODO: redirect user to main app
         setAdd(false);
       });
     }

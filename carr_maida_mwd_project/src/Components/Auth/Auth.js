@@ -6,7 +6,7 @@ import { checkUser } from "./AuthService";
 const AuthModule = () => {
   const navigate = useNavigate();
 
-  // redirect already authenticated users back to home
+  // If a user is already logged in then redirect them to the home page
   useEffect(() => {
     if (checkUser()) {
       alert("You are already logged in");
