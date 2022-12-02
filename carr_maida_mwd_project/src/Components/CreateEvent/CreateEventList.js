@@ -1,12 +1,16 @@
+/*
+
 import React, { useEffect, useState } from "react";
 import {
   createEvent,
   getAllEvents,
   removeEvent
-} from "../../Services/EventService";
+} from "./EventService";
 import CreateEventForm from "./CreateEventForm";
 
 /* STATEFUL PARENT COMPONENT */
+
+/*
 const EventList = () => {
   // Variables in the state to hold data
   const [events, setEvents] = useState([]);
@@ -85,10 +89,10 @@ const EventList = () => {
             {events.map((event) => (
               <div>
                 <span>
-                  {/* Using getter for event Object to display name */}
+                  {/* Using getter for event Object to display name *//*}
                   <li key={event.id}>{event.get("name")}</li>{" "}
                   {/* Button with inline click handler to obtain 
-                  instance of event for remove state variable*/}
+                  instance of event for remove state variable*//*}
                   <button
                     onClick={(e) => {
                       // Set remove variable and trigger re-render
@@ -103,7 +107,7 @@ const EventList = () => {
           </ul>
         )}
       </div>
-      {/* Stateless Child component passing up events from form */}
+      {/* Stateless Child component passing up events from form *//*}
       <CreateEventForm onClick={onClickHandler} onChange={onChangeHandler} />
     </div>
   );

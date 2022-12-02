@@ -5,17 +5,30 @@ import Parse from "parse";
 // in the future, submitting and event will send the event to the database
 
 // CREATE operation - new event with Name
-export const createEvent = (Name) => {
-  console.log("Creating: ", Name);
-  const Event = Parse.Object.extend("events");
-  const event = new Event();
-  // using setter to UPDATE the object
-  event.set("name", Name);
-  return event.save().then((result) => {
-    // returns new Event object
-    return result;
+export const createEvent = (newEvent) => {
+	const Event = Parse.Object.extend("events");
+	const event = new Event();
+  console.log("Event Date Time", new Date(newEvent.event_date_time));
+  
+	event.set("host", Parse.User.current());
+	event.set("event_name", newEvent.event_name);
+	event.set("event_date_time", new Date(newEvent.event_date_time));
+	event.set("event_location", newEvent.event_location);
+
+
+  return event.save()
+  .then((eventResult) => {
+    // Execute any logic that should take place after the object is saved.
+    alert('New object created with objectId: ' + eventResult.id);
+  }, (error) => {
+    // Execute any logic that should take place if the save fails.
+    // error is a Parse.Error with an error code and message.
+    alert('Failed to create new object, with error code: ' + error.message);
   });
 };
+
+
+
 
 // READ operation - get event by ID
 export const getById = (id) => {
