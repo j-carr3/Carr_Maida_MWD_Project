@@ -7,7 +7,15 @@ const EventForm = ({ onChange, onClick }) => {
       <hr />
       This is the form for creating a new event
       <form>
-        <input text="event" onChange={onChange} />
+		<p><label for="event_name">Event Name: </label>
+			<input type="text" name="event_name"/>
+		</p>	
+		<p><label for="event_date_time">When: </label>
+			<input type="datetime-local" name="event_date_time"/>
+		</p>
+		<p><label for="event_location">Where: </label>
+			<input type="text" name="event_location"/>
+		</p>
         <button type="submit" onClick={onClick}>
           Submit
         </button>
