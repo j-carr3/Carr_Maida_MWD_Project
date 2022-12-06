@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom'
 import {getAllEvents} from "../CreateEvent/EventService";
 
 function EventsData() {
@@ -17,8 +18,8 @@ function EventsData() {
       {events.length > 0 && (
         <ol>
           {events.map((event) => (
-            <li key={event.objectId}>
-              {event.get("event_name")} | host: {event.get("host_id")} |
+            <li key={event.get("objectId")}>
+              <Link to={`/EventDetails/${event.get("objectId")}`}>{event.get("event_name")}</Link> | host: {event.get("host_id")} |
               place: {event.get("event_location")} 
 			</li>
           ))}

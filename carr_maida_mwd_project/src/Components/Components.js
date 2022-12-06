@@ -27,7 +27,7 @@ export default function Components() {
 		<Route path="/auth/login" element={<AuthLogin />} />
        	<Route path="/events" element={<ProtectedRoute path="/" element={Events} />} />
         <Route path="/createEvent" element={<ProtectedRoute path="/" element={CreateEvent} />} />
-        <Route path="/eventDetails" element={<ProtectedRoute path="/" element={EventDetails} />} />
+        <Route path="/eventDetails/:id" element={<ProtectedRoute path="/" element={EventDetails} />} />
 		<Route path="*" element={<Navigate to="/auth" replace />} />
       </Routes>
     </Router>
