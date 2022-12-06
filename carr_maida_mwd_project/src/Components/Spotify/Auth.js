@@ -30,11 +30,14 @@ function SpotifyAuth() {
 
     return (
         <div>
-                <p>Spotify React</p>
                 {!token ?
+                    <div>
+                    <p>To use the full functionality of our app, please login to Spotify</p>
                     <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login
                         to Spotify</a>
-                    : <button onClick={logout}>Logout</button>}
+                    </div>
+                    : <button onClick={logout}>Logout</button>
+                    }
         </div>
     );
 }
