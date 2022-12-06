@@ -1,7 +1,7 @@
 import React from "react";
 import EventsList from "./EventsList.js";
 import { Link } from "react-router-dom";
-import Header from "../Header/Header.js"
+import NavBar from "../Header/MuiHeader.js"
 
 
 
@@ -11,7 +11,7 @@ import Header from "../Header/Header.js"
 const EventsComponent = () => {
   return (
     <div>
-      <Header />
+      <NavBar />
       <h2> This is the Events List Component </h2>
       <EventsList />
       <p> View event details</p>
