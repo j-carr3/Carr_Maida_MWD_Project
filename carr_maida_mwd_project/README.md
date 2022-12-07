@@ -23,4 +23,11 @@ You may also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+## Additional Notes
+
+### Access
+
+Our app uses the Spotify Web API, in order to use the full functionality of the app you must request access to\
+the app's Spotify dashboard by contacting us. Thank you. 
+
 
