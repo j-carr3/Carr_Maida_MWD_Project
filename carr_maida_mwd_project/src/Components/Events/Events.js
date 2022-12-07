@@ -11,7 +11,6 @@ const EventsComponent = () => {
   return (
     <div>
       <NavBar />
-      <h2> This is the Events List Component </h2>
       <EventsList />
     </div>
   );

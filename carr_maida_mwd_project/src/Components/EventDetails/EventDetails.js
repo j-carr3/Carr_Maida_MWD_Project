@@ -2,6 +2,7 @@ import React from "react";
 // import EventDetailsList from "./EventDetailsList"
 //EventDetailsList will be imported in the future once we build this feature out
 import ItemsList from "./ItemsList"
+import ItemCreation from "./NewItem.js"
 import Header from "../Header/Header.js"
 import SpotifySearch from "../Spotify/Search.js"
 
@@ -13,14 +14,13 @@ import { useParams } from 'react-router-dom';
 */
  const EventDetailsModule = () => {
 
-  const { params } = useParams();
-  console.log(params);
+  const { eventId } = useParams();
 
   return (
     <div>
       <Header />
-      <h2>This will list the details for all events </h2>
-	  <h2>Items</h2>
+      <h4>This will list the details for event: {eventId}  </h4>
+    <ItemCreation />
 	  <ItemsList /> 
     <SpotifySearch />
     </div>
