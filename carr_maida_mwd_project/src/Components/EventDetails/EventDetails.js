@@ -5,12 +5,17 @@ import ItemsList from "./ItemsList"
 import Header from "../Header/Header.js"
 import SpotifySearch from "../Spotify/Search.js"
 
+import { useParams } from 'react-router-dom';
 
 /*
  this is the list of all items in the database
  Eventually, you will only be able to see the items for a specific event that you click on, and we will match the items' event_id to the events class
 */
  const EventDetailsModule = () => {
+
+  const { params } = useParams();
+  console.log(params);
+
   return (
     <div>
       <Header />
