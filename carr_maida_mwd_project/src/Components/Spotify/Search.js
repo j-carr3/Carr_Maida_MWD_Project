@@ -5,7 +5,7 @@ import axios from 'axios';
 function SpotifySearch() {
 
     const [searchKey, setSearchKey] = useState("")
-    const [songs, setSongs] = useState([])
+    const [tracks, setTracks] = useState([])
     const [token, setToken] = useState("")
 
     useEffect(() => {
@@ -23,7 +23,7 @@ function SpotifySearch() {
 
     }, [])
 
-    const searchSongs = async (e) => {
+    const searchTracks = async (e) => {
         e.preventDefault()
         const {data} = await axios.get("https://api.spotify.com/v1/search", {
             headers: {
@@ -35,7 +35,7 @@ function SpotifySearch() {
             }
         })
 
-        setSongs(data.songs.items)
+        setTracks(data.tracks.items)
     }
 
 //<form onSubmit={searchSongs}>
@@ -43,11 +43,12 @@ function SpotifySearch() {
  //   <button type={"submit"}>Search</button>
 //</form>
 
-const renderSongs = () => {
-    return songs.map(song => (
-        <div key={song.id}>
-            {song.images.length ? <img width={"100%"} src={song.images[0].url} alt=""/> : <div>No Image</div>}
-            {song.name}
+const renderTracks = () => {
+    return tracks.map(track => (
+        <div key={track.id}>
+            {track.album.images.length ? <img width={"25%%"} src={track.album.images[0].url} alt=""/> : <div>No Image</div>}
+            {track.name}
+            {track.artists.name}
         </div>
     ))
 }
@@ -56,7 +57,7 @@ const renderSongs = () => {
 return (
     <div>
     {token ?
-        <form onSubmit={searchSongs}>
+        <form onSubmit={searchTracks}>
             <input type="text" onChange={e => setSearchKey(e.target.value)}/>
             <button type={"submit"}>Search</button>
         </form>
@@ -64,7 +65,7 @@ return (
         : <h2>Please login</h2>
     }
 
-    {renderSongs()}
+    {renderTracks()}
     </div>
 );
 
