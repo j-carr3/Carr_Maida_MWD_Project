@@ -3,6 +3,7 @@ import React from "react";
 //EventDetailsList will be imported in the future once we build this feature out
 import ItemsList from "./ItemsList"
 import Header from "../Header/Header.js"
+import SpotifySearch from "../Spotify/Search.js"
 
 
 /*
@@ -16,6 +17,7 @@ import Header from "../Header/Header.js"
       <h2>This will list the details for all events </h2>
 	  <h2>Items</h2>
 	  <ItemsList /> 
+    <SpotifySearch />
     </div>
   );
 };
