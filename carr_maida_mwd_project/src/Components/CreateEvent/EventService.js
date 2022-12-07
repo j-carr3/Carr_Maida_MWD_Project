@@ -28,7 +28,7 @@ export const createEvent = (newEvent) => {
 
 
 // READ operation - get event by ID
-export const getById = (id) => {
+export const getEventById = (id) => {
   const Event = Parse.Object.extend("events");
   const query = new Parse.Query(Event);
   return query.get(id).then((result) => {
