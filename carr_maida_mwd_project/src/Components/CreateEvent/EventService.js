@@ -1,9 +1,6 @@
 import Parse from "parse";
 /* SERVICE FOR PARSE SERVER OPERATIONS */
 
-// we have create, read all, read by id, and delete, but for now only read and delete actually connect to our database
-// in the future, submitting and event will send the event to the database
-
 // CREATE operation - new event with Name
 export const createEvent = (newEvent) => {
 	const Event = Parse.Object.extend("events");
@@ -31,7 +28,7 @@ export const createEvent = (newEvent) => {
 
 
 // READ operation - get event by ID
-export const getById = (id) => {
+export const getEventById = (id) => {
   const Event = Parse.Object.extend("events");
   const query = new Parse.Query(Event);
   return query.get(id).then((result) => {

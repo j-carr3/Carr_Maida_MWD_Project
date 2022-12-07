@@ -22,13 +22,13 @@ export default function Components() {
     <Router>
       <Routes>
         <Route path="/" element={<ProtectedRoute path="/" element={Home} />} /> 
-		<Route path="/auth" element={<AuthModule />} />
-		<Route path="/auth/register" element={<AuthRegister />} />
-		<Route path="/auth/login" element={<AuthLogin />} />
+		    <Route path="/auth" element={<AuthModule />} />
+		    <Route path="/auth/register" element={<AuthRegister />} />
+		    <Route path="/auth/login" element={<AuthLogin />} />
        	<Route path="/events" element={<ProtectedRoute path="/" element={Events} />} />
         <Route path="/createEvent" element={<ProtectedRoute path="/" element={CreateEvent} />} />
-        <Route path="/eventDetails" element={<ProtectedRoute path="/" element={EventDetails} />} />
-		<Route path="*" element={<Navigate to="/auth" replace />} />
+        <Route path="/events/:eventId" element={<ProtectedRoute path="/" element={EventDetails} />} />
+		    <Route path="*" element={<Navigate to="/auth" replace />} />
       </Routes>
     </Router>
   );
