@@ -16,7 +16,7 @@ export const createEvent = (newEvent) => {
   return event.save()
   .then((eventResult) => {
     // Execute any logic that should take place after the object is saved.
-    alert('New object created with objectId: ' + eventResult.id);
+    //alert('New object created with objectId: ' + eventResult.id);
   }, (error) => {
     // Execute any logic that should take place if the save fails.
     // error is a Parse.Error with an error code and message.

@@ -3,9 +3,9 @@ import { createEvent } from "../../Services/EventService";
 import EventForm from "./CreateEventForm";
 import { useNavigate } from "react-router-dom";
 
+
 const EventCreation = () => {
 	const navigate = useNavigate();
-
 	const [newEvent, setNewEvent] = useState({
 		event_name: "",
 		event_date_time: "",
@@ -18,12 +18,13 @@ const EventCreation = () => {
 		if (newEvent && add) {
 			createEvent(newEvent).then((eventCreated) => {
 				if (eventCreated) {
-					alert(
-						`${eventCreated.get("event_name")} created!`
-					);
+					// alert(
+					// 	`${eventCreated.get("event_name")} created!`
+					// );
 					navigate("/");
 				}
 				setAdd(false);
+
 				navigate("/")
 			});
 		}

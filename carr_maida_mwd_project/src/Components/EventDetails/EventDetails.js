@@ -5,6 +5,7 @@ import ItemsList from "./ItemsList"
 import ItemCreation from "./NewItem.js"
 import Header from "../Header/Header.js"
 import SpotifySearch from "../Spotify/Search.js"
+import NewPlaylist from "../Spotify/CreatePlaylist.js"
 
 import { useParams } from 'react-router-dom';
 
@@ -22,6 +23,7 @@ import { useParams } from 'react-router-dom';
       <h4>This will list the details for event: {eventId}  </h4>
     <ItemCreation />
 	  <ItemsList /> 
+    <NewPlaylist />
     <SpotifySearch />
     </div>
   );
