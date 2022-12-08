@@ -1,5 +1,4 @@
 import Parse from "parse";
-import { getAllEvents } from "../Components/CreateEvent/EventService";
 //import { getById } from "../Components/CreateEvent/EventService.js";
 /* SERVICE FOR PARSE SERVER OPERATIONS */
 
@@ -26,12 +25,6 @@ export const getItemById = (id) => {
 export const createItem = (newItem) => {
 	const Item = Parse.Object.extend("items");
 	const item = new Item();
-
-	console.log(newItem.event_id);
-	getAllEvents().then((result) => {
-		const resultEvent = result.find((resultItem) => resultItem.id === newItem.event_id);
-		console.log(resultEvent);
-	});
 	
 	item.set("submitted_by", Parse.User.current());
 	item.set("item_name", newItem.item_name);
