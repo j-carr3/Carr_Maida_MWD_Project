@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createItem } from "../../Services/ItemsService";
 import ItemForm from "./CreateItemForm";
 import { useNavigate, useParams } from "react-router-dom";
-import { getAllEvents } from "../CreateEvent/EventService.js";
+import { getAllEvents } from "../../Services/EventService.js";
 
 const ItemCreation = () => {
 	const navigate = useNavigate();

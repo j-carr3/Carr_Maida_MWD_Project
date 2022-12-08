@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
-import {getAllEvents} from "../CreateEvent/EventService";
+import {getAllEvents} from "../../Services/EventService";
 
 function EventsData() {
   const [events, setEvents] = useState([]);
