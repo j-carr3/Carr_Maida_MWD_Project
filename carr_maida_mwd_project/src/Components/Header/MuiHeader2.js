@@ -38,7 +38,7 @@ function NavBar () {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Web Dev Event Planner
+            EventMate
           </Typography>
           <NavLinkStyled>
             <LinkStyled to="/"> 

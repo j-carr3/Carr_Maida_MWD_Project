@@ -5,9 +5,8 @@ import ItemsList from "./ItemsList"
 import ItemCreation from "./NewItem.js"
 import SongRequestCreation from "../Spotify/NewSongRequest";
 import SongRequestData from "../Spotify/SongRequestList";
-import Header from "../Header/Header.js"
-
 import { useParams } from 'react-router-dom';
+import NavBar from "../Header/MuiHeader.js";
 
 /*
  this is the list of all items in the database
@@ -19,8 +18,8 @@ import { useParams } from 'react-router-dom';
 
   return (
     <div>
-      <Header />
-      <h4>This will list the details for event: {eventId}  </h4>
+      <NavBar />
+      <h4>Event Details for: {eventId}  </h4>
     <ItemCreation />
 	  <ItemsList /> 
     <SongRequestCreation />
