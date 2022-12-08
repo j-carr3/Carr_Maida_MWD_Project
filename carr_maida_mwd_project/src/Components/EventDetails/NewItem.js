@@ -7,6 +7,8 @@ import { getAllEvents } from "../CreateEvent/EventService.js";
 const ItemCreation = () => {
 	const navigate = useNavigate();
     const { eventId } = useParams();
+	const [add, setAdd] = useState(false);
+	const [load, setLoad] = useState(true);
 	
     const [newItem, setNewItem] = useState({
 		item_name: "",
@@ -16,24 +18,25 @@ const ItemCreation = () => {
 	});
 
     useEffect(() => {
+		if (newItem && load) {
+
         getAllEvents().then((result) => {
-            let resultEvent = {}
+				let resultEvent = {}
 		    resultEvent = result.find((resultItem) => resultItem.id === eventId);
 
             setNewItem({
                 ...newItem,
                 event_id: resultEvent
             });
+			setLoad(false);
+
 	    }, (error) => {
             // Execute any logic that should take place if the save fails.
             // error is a Parse.Error with an error code and message.
             alert('Frick: ' + error.message);
           });
-    }, [newItem, eventId]);
-
-
-
-	const [add, setAdd] = useState(false);
+		}
+    }, [newItem, eventId, load]);
 
 	useEffect(() => {
 		if (newItem && add) {
@@ -42,12 +45,12 @@ const ItemCreation = () => {
 					alert(
 						`${itemCreated.get("item_name")} created!`
 					);
-					navigate("/");
 				}
 				setAdd(false);
+				setLoad(true);
 			});
 		}
-	}, [navigate, newItem, add]);
+	}, [navigate, newItem, add, load]);
 
 	const onChangeHandler = (e) => {
 		e.preventDefault();
