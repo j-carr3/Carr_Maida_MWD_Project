@@ -18,7 +18,7 @@ const ItemCreation = () => {
 	});
 
     useEffect(() => {
-		if (newItem && load) {
+		if (load) {
 
         getAllEvents().then((result) => {
 				let resultEvent = {}
@@ -42,15 +42,15 @@ const ItemCreation = () => {
 		if (newItem && add) {
 			createItem(newItem).then((itemCreated) => {
 				if (itemCreated) {
+
 					alert(
 						`${itemCreated.get("item_name")} created!`
 					);
 				}
 				setAdd(false);
-				setLoad(true);
 			});
 		}
-	}, [navigate, newItem, add, load]);
+	}, [navigate, newItem, add]);
 
 	const onChangeHandler = (e) => {
 		e.preventDefault();
