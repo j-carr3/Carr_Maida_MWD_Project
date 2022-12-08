@@ -3,6 +3,8 @@ import React from "react";
 //EventDetailsList will be imported in the future once we build this feature out
 import ItemsList from "./ItemsList"
 import ItemCreation from "./NewItem.js"
+import SongRequestCreation from "../Spotify/NewSongRequest";
+import SongRequestData from "../Spotify/SongRequestList";
 import Header from "../Header/Header.js"
 import SpotifySearch from "../Spotify/Search.js"
 
@@ -22,6 +24,8 @@ import { useParams } from 'react-router-dom';
       <h4>This will list the details for event: {eventId}  </h4>
     <ItemCreation />
 	  <ItemsList /> 
+    <SongRequestCreation />
+    <SongRequestData />
     <SpotifySearch />
     </div>
   );
