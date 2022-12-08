@@ -15,10 +15,11 @@ const CustomButton = styled(Button)(({theme}) => ({
 const EventForm = ({ event, onChange, onSubmit }) => {
   return (
     <div>
+		<link href="../Styles/fonts.css" type="text/css" rel="stylesheet" />
 		<Box m={2} pt={3}>
 		<ThemeProvider theme={theme}>
     	<hr />
-      	This is the form for creating a new event
+      	<h2 class="font">This is the form for creating a new event</h2>
       	<form onSubmit={onSubmit} autoComplete="off">
 			<TextField 
 				label= "Event Name"
@@ -31,6 +32,7 @@ const EventForm = ({ event, onChange, onSubmit }) => {
 				placeholder="event name"
 				required
 				margin="normal"
+				//class="font"
 			/>
 			<br/>
 			<br/>
