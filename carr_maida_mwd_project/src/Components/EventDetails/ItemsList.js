@@ -20,8 +20,11 @@ function ItemsData() {
 
 	return (
 		<div>
-			<h5>Items for the Event: {eventId}</h5>
-			
+			{items.lenght > 0 && (
+				<h5>Item List</h5>
+
+			)}
+
 			{items.length > 0 && (
 				<ol>
 					{items.map((item) => (

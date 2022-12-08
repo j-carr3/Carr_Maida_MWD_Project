@@ -19,9 +19,8 @@ const ItemCreation = () => {
 
     useEffect(() => {
 		if (load) {
-
         getAllEvents().then((result) => {
-				let resultEvent = {}
+			let resultEvent = {}
 		    resultEvent = result.find((resultItem) => resultItem.id === eventId);
 
             setNewItem({
@@ -43,9 +42,9 @@ const ItemCreation = () => {
 			createItem(newItem).then((itemCreated) => {
 				if (itemCreated) {
 
-					alert(
-						`${itemCreated.get("item_name")} created!`
-					);
+					// alert(
+					// 	`${itemCreated.get("item_name")} created!`
+					// );
 				}
 				setAdd(false);
 			});
@@ -66,6 +65,7 @@ const ItemCreation = () => {
 		e.preventDefault();
 		console.log("submitted: ", e.target);
 		setAdd(true);
+		setLoad(true);
 	};
 
 	return (

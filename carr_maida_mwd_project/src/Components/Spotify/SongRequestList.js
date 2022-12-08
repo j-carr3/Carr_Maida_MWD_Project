@@ -19,10 +19,10 @@ function SongRequestData() {
 	}, [eventId, load]);
 	
 	return (
-		<div>
-			<h5>Requested songs for: {eventId}</h5>
-		
-			
+		<div>		
+			{songRequests.length > 0 && (
+				<h5>Requested Songs: </h5>
+			)}	
 			{songRequests.length > 0 && (
 				<ol>
 					{songRequests.map((request) => (

@@ -6,7 +6,6 @@ import ItemCreation from "./NewItem.js"
 import SongRequestCreation from "../Spotify/NewSongRequest";
 import SongRequestData from "../Spotify/SongRequestList";
 import Header from "../Header/Header.js"
-import SpotifySearch from "../Spotify/Search.js"
 
 import { useParams } from 'react-router-dom';
 
@@ -26,7 +25,6 @@ import { useParams } from 'react-router-dom';
 	  <ItemsList /> 
     <SongRequestCreation />
     <SongRequestData />
-    <SpotifySearch />
     </div>
   );
 };

@@ -35,7 +35,6 @@ export const createItem = (newItem) => {
   return item.save()
   .then((itemResult) => {
     // Execute any logic that should take place after the object is saved.
-    alert('New item created with objectId: ' + itemResult.id);
   }, (error) => {
     // Execute any logic that should take place if the save fails.
     // error is a Parse.Error with an error code and message.
