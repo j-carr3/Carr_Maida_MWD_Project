@@ -5,15 +5,19 @@ import { useParams } from "react-router-dom";
 function SongRequestData() {
 	const { eventId } = useParams();
 	const [songRequests, setSongRequests] = useState([]);
+	const [load, setLoad] = useState(true);
 
 	useEffect(() => {
+		if(load){
 		getSongRequests().then((result) => {
-			setSongRequests(result);
-		});
-	}, []);
+			let requestList = result.filter((resultSongs) => resultSongs.get("event_id").id === eventId)
+			setSongRequests(requestList);
+			setLoad(false);
 
-	//display all the items for now
-	//in the future, we will display only the ones for the current event	
+			});
+		}
+	}, [eventId, load]);
+	
 	return (
 		<div>
 			<h5>Requested songs for: {eventId}</h5>
@@ -22,7 +26,7 @@ function SongRequestData() {
 			{songRequests.length > 0 && (
 				<ol>
 					{songRequests.map((request) => (
-						<li key={request.objectId}>
+						<li key={request.id}>
 							Song Name: {request.get("song_title")} | Artist: {request.get("song_artist")} 
 						</li>
 					))}

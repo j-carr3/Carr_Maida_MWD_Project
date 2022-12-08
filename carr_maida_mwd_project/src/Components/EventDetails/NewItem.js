@@ -33,7 +33,7 @@ const ItemCreation = () => {
 	    }, (error) => {
             // Execute any logic that should take place if the save fails.
             // error is a Parse.Error with an error code and message.
-            alert('Frick: ' + error.message);
+            alert('Error: ' + error.message);
           });
 		}
     }, [newItem, eventId, load]);
