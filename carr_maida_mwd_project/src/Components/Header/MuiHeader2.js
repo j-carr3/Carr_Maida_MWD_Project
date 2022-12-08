@@ -5,6 +5,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/system';
 import { Link } from "react-router-dom";
+import {theme} from "../Style/MUITheme.js"
+import { ThemeProvider } from '@mui/material/styles';
+
 
 const NavLinkStyled = styled('div')({
   marginRight: '10px',
@@ -26,8 +29,9 @@ const LinkStyled = styled(Link)({
 function NavBar () {
 
   return (
+    <ThemeProvider theme={theme}>
     <Box sx={{ display: 'flex' }}>
-      <AppBar position="static" sx={{ bgcolor: '#b6c199'}}>
+      <AppBar position="static" sx={{ bgcolor: theme.palette.primary.main}}>
         <Toolbar>
           <Typography
             variant="h6"
@@ -47,6 +51,7 @@ function NavBar () {
         </Toolbar>
       </AppBar>
     </Box>
+    </ThemeProvider>
   );
 }
 

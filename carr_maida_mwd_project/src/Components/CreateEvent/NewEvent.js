@@ -24,6 +24,7 @@ const EventCreation = () => {
 					navigate("/");
 				}
 				setAdd(false);
+				navigate("/")
 			});
 		}
 	}, [navigate, newEvent, add]);
@@ -43,7 +44,7 @@ const EventCreation = () => {
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
 		console.log("submitted: ", e.target);
-		setAdd(true);
+		setAdd(true); 
 	};
 
 	return (
