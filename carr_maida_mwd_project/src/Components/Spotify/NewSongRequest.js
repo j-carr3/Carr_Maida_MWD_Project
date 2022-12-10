@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { createSong } from "../../Services/SpotifyService";
+import { createSong, getSongRequests } from "../../Services/SpotifyService";
 import SongRequestForm from "./SongRequestForm";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAllEvents } from "../../Services/EventService.js";
@@ -9,6 +9,7 @@ const SongRequestCreation = () => {
     const { eventId } = useParams();
 	const [add, setAdd] = useState(false);
 	const [load, setLoad] = useState(true);
+	const [ songRequests, setSongRequests ] = useState([]);
 	
     const [newSongRequest, setNewSongRequest] = useState({
 		song_title: "",
@@ -17,15 +18,21 @@ const SongRequestCreation = () => {
 	});
 
     useEffect(() => {
-		if (newSongRequest && load) {
+		if (load) {
+			getSongRequests().then((result) => {
+				let requestList = result.filter((resultSongs) => resultSongs.get("event_id").id === eventId)
+				setSongRequests(requestList);
+				setLoad(false);
+	
+				});
 
-        getAllEvents().then((result) => {
+        	getAllEvents().then((result) => {
 				let resultEvent = {}
-		    resultEvent = result.find((resultItem) => resultItem.id === eventId);
+		    	resultEvent = result.find((resultItem) => resultItem.id === eventId);
 
-            setNewSongRequest({
-                ...newSongRequest,
-                event_id: resultEvent
+            	setNewSongRequest({
+                	...newSongRequest,
+                	event_id: resultEvent
             });
 			setLoad(false);
 
@@ -64,12 +71,25 @@ const SongRequestCreation = () => {
 	const onSubmitHandler = (e) => {
         console.log(newSongRequest);
 		e.preventDefault();
-		console.log("submitted: ", e.target);
 		setAdd(true);
 	};
 
 	return (
 		<div>
+			<div>		
+			{songRequests.length > 0 && (
+				<h5>Requested Songs: </h5>
+			)}	
+			{songRequests.length > 0 && (
+				<ol>
+					{songRequests.map((request) => (
+						<li key={request.id}>
+							Song Name: {request.get("song_title")} | Artist: {request.get("song_artist")} 
+						</li>
+					))}
+				</ol>
+			)}
+		</div>
 			<SongRequestForm
 				song={newSongRequest}
 				onChange={onChangeHandler}
