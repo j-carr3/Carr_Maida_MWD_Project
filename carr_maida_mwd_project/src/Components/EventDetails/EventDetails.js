@@ -1,10 +1,8 @@
 import React from "react";
 // import EventDetailsList from "./EventDetailsList"
 //EventDetailsList will be imported in the future once we build this feature out
-import ItemsList from "./ItemsList"
 import ItemCreation from "./NewItem.js"
 import SongRequestCreation from "../Spotify/NewSongRequest";
-import SongRequestData from "../Spotify/SongRequestList";
 import SpotifySearch from "../Spotify/Search.js"
 import NewPlaylist from "../Spotify/CreatePlaylist.js"
 
@@ -24,9 +22,7 @@ import NavBar from "../Header/MuiHeader.js";
       <NavBar />
       <h4>Event Details for: {eventId}  </h4>
     <ItemCreation />
-	  <ItemsList /> 
     <SongRequestCreation />
-    <SongRequestData />
     <NewPlaylist />
     <SpotifySearch />
     </div>
