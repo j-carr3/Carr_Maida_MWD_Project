@@ -22,6 +22,15 @@ export const getSongRequestById = (id) => {
 	});
 }
 
+export const removeSongRequest = (id) => {
+	const Song = Parse.Object.extend("songs");
+	const query = new Parse.Query(Song);
+
+	return query.get(id).then((result) => {
+		return result.destroy();
+	});
+}
+
 export const createSong = (newSongRequest) => {
 	const Song = Parse.Object.extend("songs");
 	const song = new Song();

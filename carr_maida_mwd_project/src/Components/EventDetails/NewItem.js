@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { createItem, getItems } from "../../Services/ItemsService";
+import { createItem, getItems, removeItem } from "../../Services/ItemsService";
 import ItemForm from "./CreateItemForm";
 import { useParams } from "react-router-dom";
 import { getAllEvents } from "../../Services/EventService.js";
@@ -10,6 +10,7 @@ const ItemCreation = () => {
 	const [add, setAdd] = useState(false);
 	const [load, setLoad] = useState(true);
 	const [items, setItems] = useState([]);
+	const [remove, setRemove] = useState("");
 	
     const [newItem, setNewItem] = useState({
 		item_name: "",
@@ -20,11 +21,13 @@ const ItemCreation = () => {
 
     useEffect(() => {
 		if (load) {
+
 			getItems().then((result) => {
 				let resultList = result.filter((resultItems) => resultItems.get("event_id").id === eventId);
 				setItems(resultList);
 		
 			})
+
         	getAllEvents().then((result) => {
 				let resultEvent = {}
 		    	resultEvent = result.find((resultItem) => resultItem.id === eventId);
@@ -35,13 +38,28 @@ const ItemCreation = () => {
             	});
 				setLoad(false);
 
+
 	    }, (error) => {
             // Execute any logic that should take place if the save fails.
             // error is a Parse.Error with an error code and message.
             alert('Error: ' + error.message);
           });
 		}
-    }, [newItem, eventId, load]);
+    }, [newItem, eventId, load, items, remove]);
+
+	useEffect(() => {
+		if (remove.length > 0) {
+				//Filter the old lessons list to take out selected lesson
+				const newItems = items.filter((item) => item.id !== remove);
+				setItems(newItems);
+		  
+				removeItem(remove).then(() => {
+				  console.log("Removed lesson with ID: ", remove);
+				});
+				// Reset remove state variable
+				setRemove("");
+		}
+	}, [items, remove]);
 
 	useEffect(() => {
 		if (newItem && add) {
@@ -82,7 +100,15 @@ const ItemCreation = () => {
 					{items.map((item) => (
 						<li key={item.id}>
 							{item.get("item_name")} | price per unit(in $): {item.get("price_per_unit")} | quantity: {item.get("quantity")} 
-						</li>
+						<button
+						onClick={(e) => {
+						  // Set remove variable and trigger re-render
+						  setRemove(item.id);
+						}}
+					  >
+						Delete
+					  </button>
+					  </li>
 					))}
 				</ol>
 			)}
