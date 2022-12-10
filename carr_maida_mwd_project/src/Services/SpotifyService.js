@@ -40,3 +40,23 @@ export const createSong = (newSongRequest) => {
     alert('Failed to create new object, with error code: ' + error.message);
   });
 };
+
+export const createNewPlaylist = (newPlaylist) => {
+	const Playlist = Parse.Object.extend("playlists");
+	const playlist = new Playlist();
+	
+	playlist.set("playlist_name", newPlaylist.playlist_name);
+	playlist.set("playlist_id", newPlaylist.playlist_id);
+	playlist.set("playlist_event", newPlaylist.playlist_event);
+
+  return playlist.save()
+  .then((playlistResult) => {
+    // Execute any logic that should take place after the object is saved.
+    alert('New item created with objectId: ' + playlistResult.id);
+  }, (error) => {
+    // Execute any logic that should take place if the save fails.
+    // error is a Parse.Error with an error code and message.
+    alert('Failed to create new object, with error code: ' + error.message);
+  });
+};
+
