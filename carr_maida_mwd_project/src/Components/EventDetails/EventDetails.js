@@ -5,6 +5,9 @@ import ItemsList from "./ItemsList"
 import ItemCreation from "./NewItem.js"
 import SongRequestCreation from "../Spotify/NewSongRequest";
 import SongRequestData from "../Spotify/SongRequestList";
+import SpotifySearch from "../Spotify/Search.js"
+import NewPlaylist from "../Spotify/CreatePlaylist.js"
+
 import { useParams } from 'react-router-dom';
 import NavBar from "../Header/MuiHeader.js";
 
@@ -24,6 +27,8 @@ import NavBar from "../Header/MuiHeader.js";
 	  <ItemsList /> 
     <SongRequestCreation />
     <SongRequestData />
+    <NewPlaylist />
+    <SpotifySearch />
     </div>
   );
 };
