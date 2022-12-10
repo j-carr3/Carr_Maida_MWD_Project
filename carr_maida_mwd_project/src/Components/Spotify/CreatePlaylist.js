@@ -25,20 +25,19 @@ function NewPlaylist () {
 
     const createPlaylist = async (e) => {
         const headersCust = {
-            Authorization: `Bearer BQDYdUH148QwXoBBd13MxyUXvD5ZjQOODQmAxYR6BlgH6QN6_OIwRKHWv-cm_TQIt3u3UN_JaintdWSpO2K0RTNjNeOqLdHm_YyjOAjlHevWQcwCHWqMJ3HMQEofGXiirB4md4vWy4MOzaahKavJJGs_YWLVfgjurYTCLuFEpO97LYHIbDfumAiL_EAYmGyX0NBLuzvlP1r3cN7suaybil7kSNfX_tijOYB5-4VF0yU`
+            Authorization: `Bearer ${token}`
         }
         const params = {
-            name: "Party Planner Playlist",
+            name: name,
             public: true,
             //description: `Playlist for ${Parse.User.current().name}'s event`
         }
         e.preventDefault();
         console.log({token})
-        const {data} =  await axios.post("https://api.spotify.com/v1/users/tay_maida/playlists",
+        const {data} =  await axios.post(`https://api.spotify.com/v1/users/${user}/playlists`,
             params,{
             headers: headersCust
         })
-        console.log(data)
         setPlaylist(data)
 
     }
