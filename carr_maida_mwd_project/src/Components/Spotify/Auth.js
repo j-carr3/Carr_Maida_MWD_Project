@@ -5,6 +5,7 @@ function SpotifyAuth() {
     const REDIRECT_URI = "http://localhost:3000"
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
     const RESPONSE_TYPE = "token"
+    const SCOPES = ["playlist-modify-public", "playlist-modify-private"]
 
     const [token, setToken] = useState("")
 
@@ -33,7 +34,7 @@ function SpotifyAuth() {
                 {!token ?
                     <div>
                     <p>To use the full functionality of our app, please login to Spotify</p>
-                    <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login
+                    <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES.join("%20")}&response_type=${RESPONSE_TYPE}`}>Login
                         to Spotify</a>
                     </div>
                     : <button onClick={logout}>Logout</button>
