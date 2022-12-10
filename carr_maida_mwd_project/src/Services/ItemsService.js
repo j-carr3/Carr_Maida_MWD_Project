@@ -22,6 +22,15 @@ export const getItemById = (id) => {
 	});
 }
 
+export const removeItem = (id) => {
+	const Item = Parse.Object.extend("items");
+	const query = new Parse.Query(Item);
+
+	return query.get(id).then((result) => {
+		return result.destroy();
+	});
+}
+
 export const createItem = (newItem) => {
 	const Item = Parse.Object.extend("items");
 	const item = new Item();

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { createSong, getSongRequests } from "../../Services/SpotifyService";
+import { createSong, getSongRequests, removeSongRequest } from "../../Services/SpotifyService";
 import SongRequestForm from "./SongRequestForm";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAllEvents } from "../../Services/EventService.js";
@@ -10,6 +10,8 @@ const SongRequestCreation = () => {
 	const [add, setAdd] = useState(false);
 	const [load, setLoad] = useState(true);
 	const [ songRequests, setSongRequests ] = useState([]);
+	const [remove, setRemove] = useState("");
+
 	
     const [newSongRequest, setNewSongRequest] = useState({
 		song_title: "",
@@ -43,6 +45,20 @@ const SongRequestCreation = () => {
           });
 		}
     }, [newSongRequest, eventId, load]);
+
+	useEffect(() => {
+		if (remove.length > 0) {
+				//Filter the old lessons list to take out selected lesson
+				const newSongRequests = songRequests.filter((item) => item.id !== remove);
+				setSongRequests(newSongRequests);
+		  
+				removeSongRequest(remove).then(() => {
+				  console.log("Removed song request with ID: ", remove);
+				});
+				// Reset remove state variable
+				setRemove("");
+		}
+	}, [songRequests, remove]);
 
 	useEffect(() => {
 		if (newSongRequest && add) {
@@ -85,6 +101,14 @@ const SongRequestCreation = () => {
 					{songRequests.map((request) => (
 						<li key={request.id}>
 							Song Name: {request.get("song_title")} | Artist: {request.get("song_artist")} 
+							<button
+						onClick={(e) => {
+						  // Set remove variable and trigger re-render
+						  setRemove(request.id);
+						}}
+					  >
+						Delete
+					  </button>
 						</li>
 					))}
 				</ol>
