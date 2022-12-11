@@ -12,11 +12,7 @@ function AddSong () {
         track_name: "",
         track_artist: ""
     })
-    const [track, setTrack] = useState({
-        track_name: "",
-        track_artist: "",
-        track_uri: ""
-    });
+    
 
     useEffect(() => {
         const hash = window.location.hash
@@ -51,7 +47,9 @@ function AddSong () {
     }, [playlistId, eventId, load]);
 
     const searchTracks = async (e) => {
-        console.log("here")
+        e.preventDefault();
+        console.log("here");
+        console.log(initTrack.track_name);
         const {data} = await axios.get("https://api.spotify.com/v1/search", {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -62,42 +60,27 @@ function AddSong () {
                 limit: 20
             }
         })
-        e.preventDefault();
-        for (var item in data.tracks) {
-            if (item.album.artists.name === initTrack.track_artist) {
-                setTrack({
-                    ...track,
-                    track_name: initTrack.track_name, 
-                    track_artist: initTrack.track_artist,
-                    track_uri: item.uri
-                });
+
+
+        for (var item in data.tracks.items) {
+            if (data.tracks.items[item].album.artists[0].name === initTrack.track_artist) {
+                const headersCust = {
+                    Authorization: `Bearer ${token}`
+                }
+                const params = {
+                    uris: [data.tracks.items[item].uri]
+                }
+                const {data2} =  await axios.post(`	https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+                    params,{
+                    headers: headersCust
+                })
+                alert("Added track: " + data.tracks.items[item].uri)
+
                 break;
             }
+
         }
 
-        addSong(track);
-
-    }
-
-    const addSong = async(track) => {
-        try  {
-            const headersCust = {
-                Authorization: `Bearer ${token}`
-            }
-            const params = {
-                playlist_id: playlistId,
-                uris: track.track_uri
-            }
-            const {data} =  await axios.post(`	https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
-                params,{
-                headers: headersCust
-            })
-            alert("Added track: " + track.track_uri)
-}
-
-        catch {
-            alert('Error: Could not find song');
-        }
 
     }
 
@@ -129,6 +112,7 @@ function AddSong () {
         </div>
     );
 
+  
 }
 
 export default AddSong;
