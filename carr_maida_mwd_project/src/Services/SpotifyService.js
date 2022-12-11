@@ -69,3 +69,12 @@ export const createNewPlaylist = (newPlaylist) => {
   });
 };
 
+// READ OPERATION - Read all items
+export const getAllPlaylists = () => {
+	const Playlist = Parse.Object.extend("playlists");
+	const query = new Parse.Query(Playlist);
+
+	return query.find().then((result) => {
+		return result;
+	});
+}

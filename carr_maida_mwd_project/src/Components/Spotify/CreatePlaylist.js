@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
-import Parse from "parse";
 import { useParams } from "react-router-dom";
 import { createNewPlaylist } from "../../Services/SpotifyService.js";
 import { getAllEvents } from "../../Services/EventService.js";
+import Parse from 'parse';
 
 function NewPlaylist () {
     const [token, setToken] = useState("")
@@ -13,6 +13,7 @@ function NewPlaylist () {
     const { eventId } = useParams();
     const [load, setLoad] = useState(true);
     const [add, setAdd] = useState(false);
+    const [hostUser, setHostUser] = useState("");
 
     const [newPlaylist, setNewPlaylist] = useState({
 		playlist_name: "",
@@ -110,25 +111,42 @@ function NewPlaylist () {
         setUser(data.id)
     }
 
+    useEffect(() => {
+        if (load) {
+        getAllEvents().then((result) => {
+            let resultEvent = {}
+            resultEvent = result.find((result) => result.id === eventId);
+            
+            setHostUser(resultEvent.get("host").id);
+            console.log(resultEvent.get("host").id)
+            setLoad(false);
 
-    //const renderPlaylist = () => {
-      //  return (
-        //    playlist
-        //)
-   // }
+        }, (error) => {
+            // Execute any logic that should take place if the save fails.
+            // error is a Parse.Error with an error code and message.
+            alert('Error: ' + error.message);
+        });
+        }
+        setLoad(false);
+    }, [hostUser, eventId, load]);
     
     
     return (
         <div>
-        {token ?
+        {token && (Parse.User.current().id === hostUser) ?
             <div>
+            <h2>Create a playlist for your event!</h2>
             <form playlist = {newPlaylist} onSubmit={createPlaylist} onChange={getUser}>
+                <label>Playlist Name: </label>
             <input type="text" onChange={e => setName(e.target.value)}/>
             <button type={"submit"}>Submit</button>
         </form>
             </div>
     
-            : <h2>Please login</h2>
+            :   <div>
+                    <h2>Only the host can create a playlist for this event</h2>
+                    <h3>If you are the host: please go to the home page and re-login with your spotify to use this feature.</h3>
+                </div>
         }
       
         </div>

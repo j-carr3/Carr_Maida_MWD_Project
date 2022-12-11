@@ -3,11 +3,10 @@ import React from "react";
 //EventDetailsList will be imported in the future once we build this feature out
 import ItemCreation from "./NewItem.js"
 import SongRequestCreation from "../Spotify/NewSongRequest";
-import SpotifySearch from "../Spotify/Search.js"
 import NewPlaylist from "../Spotify/CreatePlaylist.js"
-
 import { useParams } from 'react-router-dom';
 import NavBar from "../Header/MuiHeader.js";
+import AddSong from "../Spotify/AddSongs.js";
 
 /*
  this is the list of all items in the database
@@ -24,7 +23,7 @@ import NavBar from "../Header/MuiHeader.js";
     <ItemCreation />
     <SongRequestCreation />
     <NewPlaylist />
-    <SpotifySearch />
+    <AddSong />
     </div>
   );
 };
