@@ -23,14 +23,14 @@ function EventsData() {
       <h1>Events</h1>
 
       {events.length > 0 && (
-        <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <TableContainer sx={{ margin: 'auto' }} component={Paper}>
+        <Table sx={{ margin: 'auto' }} aria-label="simple table">
             <TableHead>
                 <TableRow>
                     <TableCell>
                         NAME
                     </TableCell>
-                    <TableCell align="right">
+                    <TableCell>
                         LOCATION
                     </TableCell>
                 </TableRow>
@@ -40,13 +40,13 @@ function EventsData() {
                     <TableRow
                         key={event.id}
                         sx={{ '&:last-child td, &:last-child th':
-                            { border: 0 } }}
+                            { margin: 'auto' } }}
                     >
                         <TableCell component="th" scope="row">
-                            {event.get("name")}
+                        <Link to={`/events/${event.id}`}>{event.get("event_name")}</Link>
                         </TableCell>
-                        <TableCell align="right">
-                            {event.get("location")}
+                        <TableCell>
+                            {event.get("event_location")}
                         </TableCell>
                         
                     </TableRow>
@@ -54,15 +54,6 @@ function EventsData() {
             </TableBody>
         </Table>
     </TableContainer>
-      )}
-      {events.length > 0 && (
-        <ol>
-           {events.map((event) => {
-             return <li key={event.id}>
-               Name: <Link to={`/events/${event.id}`}>{event.get("event_name")}</Link> | Host: {event.get("host").id} | Location: {event.get("event_location")}
-             </li>
-           })}
-         </ol>
       )}
     </div>
   );
