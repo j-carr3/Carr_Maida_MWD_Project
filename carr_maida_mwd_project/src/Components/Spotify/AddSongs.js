@@ -2,12 +2,15 @@ import {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import { getAllPlaylists } from '../../Services/SpotifyService';
+import Parse from "parse";
+import { getAllEvents } from '../../Services/EventService';
 
 function AddSong () {
     const { eventId } = useParams();
     const [playlistId, setPlaylistId] = useState("")
     const [token, setToken] = useState("");
     const [load, setLoad] = useState(true);
+    const [hostUser, setHostUser] = useState("");
     const [initTrack, setInitTrack] = useState({
         track_name: "",
         track_artist: ""
@@ -84,12 +87,31 @@ function AddSong () {
 
     }
 
+    useEffect(() => {
+        if (load) {
+        getAllEvents().then((result) => {
+            let resultEvent = {}
+            resultEvent = result.find((result) => result.id === eventId);
+            
+            setHostUser(resultEvent.get("host").id);
+            console.log(resultEvent.get("host").id);
+            setLoad(false);
+
+        }, (error) => {
+            // Execute any logic that should take place if the save fails.
+            // error is a Parse.Error with an error code and message.
+            alert('Error: ' + error.message);
+        });
+        }
+        setLoad(false);
+    }, [hostUser, eventId, load]);
+
 
     return (
         <div>
-            <h2>Add songs to your playlist</h2>
-        {token ?
+        {token && (Parse.User.current().id === hostUser) ?
             <div>
+            f<h2>Add songs to your playlist</h2>
             <form onSubmit={searchTracks}>
             <label>Song Name: </label>
             <input type="text" onChange={e => setInitTrack({
@@ -106,7 +128,14 @@ function AddSong () {
         </form>
             </div>
     
-            : <h2>Please login</h2>
+            : <>  {!token && (Parse.User.current().id === hostUser) ?                
+                <div>
+                <h3>Host: Please go to the home page and re-login with your spotify to use this feature.</h3>
+                </div>
+
+                : null
+            }
+        </>
         }
       
         </div>

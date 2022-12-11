@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
-import { createNewPlaylist } from "../../Services/SpotifyService.js";
+import { createNewPlaylist, getAllPlaylists } from "../../Services/SpotifyService.js";
 import { getAllEvents } from "../../Services/EventService.js";
 import Parse from 'parse';
 
@@ -14,6 +14,7 @@ function NewPlaylist () {
     const [load, setLoad] = useState(true);
     const [add, setAdd] = useState(false);
     const [hostUser, setHostUser] = useState("");
+    const [existingPlaylist, setExistingPlaylist] = useState("")
 
     const [newPlaylist, setNewPlaylist] = useState({
 		playlist_name: "",
@@ -131,9 +132,47 @@ function NewPlaylist () {
     }, [hostUser, eventId, load]);
     
     
+    useEffect(() => {
+        if (load) {
+        getAllEvents().then((result) => {
+            let resultEvent = {}
+            resultEvent = result.find((result) => result.id === eventId);
+            
+            setHostUser(resultEvent.get("host").id);
+            console.log(resultEvent.get("host").id);
+            setLoad(false);
+
+        }, (error) => {
+            // Execute any logic that should take place if the save fails.
+            // error is a Parse.Error with an error code and message.
+            alert('Error: ' + error.message);
+        });
+        }
+        setLoad(false);
+    }, [hostUser, eventId, load]);
+
+    useEffect(() => {
+        if (load) {
+        getAllPlaylists().then((result) => {
+            let resultPlaylist = ""
+            resultPlaylist = result.find((result) => result.get("playlist_event").id === eventId);
+            
+            setExistingPlaylist(resultPlaylist.id);
+            setLoad(false);
+
+        }, (error) => {
+            // Execute any logic that should take place if the save fails.
+            // error is a Parse.Error with an error code and message.
+            alert('Error: ' + error.message);
+        });
+        }
+        setLoad(false);
+    }, [existingPlaylist, eventId, load]);
+    
+    
     return (
         <div>
-        {token && (Parse.User.current().id === hostUser) ?
+        {token && (Parse.User.current().id === hostUser) && !existingPlaylist ?
             <div>
             <h2>Create a playlist for your event!</h2>
             <form playlist = {newPlaylist} onSubmit={createPlaylist} onChange={getUser}>
@@ -143,10 +182,14 @@ function NewPlaylist () {
         </form>
             </div>
     
-            :   <div>
-                    <h2>Only the host can create a playlist for this event</h2>
-                    <h3>If you are the host: please go to the home page and re-login with your spotify to use this feature.</h3>
-                </div>
+            :  <>  {!token && (Parse.User.current().id === hostUser) ?                
+                        <div>
+                        <h3>Host: Please go to the home page and re-login with your spotify to use this feature.</h3>
+                        </div>
+
+                        : null
+                    }
+                </>
         }
       
         </div>
