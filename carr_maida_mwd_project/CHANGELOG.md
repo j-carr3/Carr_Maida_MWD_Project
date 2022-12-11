@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Users can create a new event 
 - Users can add/delete items that need to be purchased for an event
 - Some design added
+- Dynamic Routing for Event Details
+- Conditional Rendering for each Event and based on if User is host or not
+
+*Notes for Use: Hosts can view recommended songs and use form at bottom to add to Spotify playlist. Song names and artists must be typed in correctly for proper function.
 
 ### Changed
  
