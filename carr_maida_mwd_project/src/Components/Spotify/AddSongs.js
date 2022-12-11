@@ -111,7 +111,7 @@ function AddSong () {
         <div>
         {token && (Parse.User.current().id === hostUser) ?
             <div>
-            f<h2>Add songs to your playlist</h2>
+            <h2>Add songs to your playlist</h2>
             <form onSubmit={searchTracks}>
             <label>Song Name: </label>
             <input type="text" onChange={e => setInitTrack({
