@@ -4,12 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
  
-## [Unreleased] - 2022-10-26
+## [0.4.0] - 2022-12-10
  
 ### Added
-- Feature for users to create collaborative playlists for specific events
-- In order for completeness in future, what we are submitting with this feature for our two "drawings" include the classes/components we are planning to add in the future
- 
+- Feature for users to create playlists for specific events
+- Users can create a new event 
+- Users can add/delete items that need to be purchased for an event
+- Some design added
+
 ### Changed
  
 ### Fixed
